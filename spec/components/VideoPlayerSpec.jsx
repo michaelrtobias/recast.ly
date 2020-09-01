@@ -12,7 +12,7 @@ describe ('VideoPlayer', function() {
   // for stateless functional components, we must wrap them in a class component
   // Wrapper.jsx defined a Wrapper component to use in our tests
   // Read more here: https://github.com/facebook/react/issues/4972
-
+  console.log(window);
   beforeEach(function() {
     cuteCatVideo = renderIntoDocument(
       <Wrapper>

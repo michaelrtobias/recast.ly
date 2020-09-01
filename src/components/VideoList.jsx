@@ -1,10 +1,11 @@
-var VideoList = () => (
+import VideoListEntry from './VideoListEntry.jsx';
+var VideoList = (props) => (
   <div className="video-list">
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
+    <div><h5><em>videoListEntry</em><VideoListEntry entry={props.exampleVideoData[0]}/></h5></div>
+    <div><h5><em>videoListEntry</em><VideoListEntry entry={props.exampleVideoData[1]}/></h5></div>
+    <div><h5><em>videoListEntry</em><VideoListEntry entry={props.exampleVideoData[2]}/></h5></div>
+    <div><h5><em>videoListEntry</em><VideoListEntry entry={props.exampleVideoData[3]}/></h5></div>
+    <div><h5><em>videoListEntry</em><VideoListEntry entry={props.exampleVideoData[4]}/></h5></div>
   </div>
 );
 
@@ -17,3 +18,4 @@ VideoList.propTypes = {
 // In the ES6 spec, files are "modules" and do not share a top-level scope.
 // `var` declarations will only exist globally where explicitly defined.
 export default VideoList;
+
