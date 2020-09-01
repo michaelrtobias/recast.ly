@@ -10,11 +10,13 @@ class App extends React.Component {
       video: exampleVideoData[0]
     };
     this.handleClick = this.handleClick.bind(this);
+
   }
 
-  handleClick(e) {
-    console.log(e);
-    console.log('click registered');
+  handleClick (e) {
+    this.setState({
+      video: e
+    });
   }
 
   render() {
@@ -30,7 +32,7 @@ class App extends React.Component {
             <div><h5><em>videoPlayer</em> <VideoPlayer video= {this.state.video}/></h5></div>
           </div>
           <div className="col-md-5">
-            <div><h5><em>videoList</em> <VideoList onClick={this.handleClick} videos={this.state.videos} /> </h5></div>
+            <div><h5><em>videoList</em> <VideoList clicker={this.handleClick} videos={this.state.videos} /> </h5></div>
           </div>
         </div>
       </div>
