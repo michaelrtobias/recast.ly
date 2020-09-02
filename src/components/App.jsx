@@ -1,6 +1,7 @@
 import VideoList from './VideoList.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoPlayer from './VideoPlayer.js';
+import searchYouTube from '../lib/searchYouTube.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +13,23 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
 
   }
+  componentDidMount() {
+    this.getYoutubeVideos('Cute puppies');
+  }
 
+  getYoutubeVideos(query) {
+    var options = {
+      //add api key
+      key: this.props.APIKEY,
+      query: query
+    };
+    searchYouTube(options, (value) => {
+      this.setState({
+        videos: value.items,
+        video: value.items[0]
+      });
+    });
+  }
   handleClick (e) {
     this.setState({
       video: e

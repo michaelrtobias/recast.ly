@@ -1,20 +1,21 @@
-var searchYouTube = (options, callback) => {
-  // TODO
-  var options = {
-    q: q,
-    maxResults: 5,
-    key: 'AIzaSyAHyz-7XPtvuq8nOBdnnWPxo33jWHzd5Cs'
-  };
-  $.ajax({
-    url: Parse.server,
-    type: 'GET',
-    data: JSON.stringify(options),
-    contentType: 'application/json',
-    success: callback,
-    error: errorCB || function(error) {
-      console.error('Failed to pos message', error);
-    }
-  });
+var searchYouTube = ({key, query, max = 5}, callback) => {
+
+  $.get('https://www.googleapis.com/youtube/v3/search', {
+    part: 'snippet',
+    key: key,
+    q: query,
+    maxResults: max,
+    type: 'video',
+    videoEmbeddable: 'true'
+  })
+    .done((items) => {
+      if (callback) {
+        callback(items);
+      }
+    });
+  // .failed(({responseJSON}) => {
+  //   console.log(responseJSON);
+  // });
 };
 
 export default searchYouTube;
